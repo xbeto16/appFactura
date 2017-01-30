@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:aop="http://www.springframework.org/schema/aop" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:dwr="http://www.directwebremoting.org/schema/spring-dwr"	
+	xmlns:jee="http://www.springframework.org/schema/jee"			 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		 http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		 http://www.springframework.org/schema/aop
+		 http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+		 http://www.directwebremoting.org/schema/spring-dwr 
+		 http://www.directwebremoting.org/schema/spring-dwr-3.0.xsd">
+
+	<dwr:configuration>
+		<dwr:convert type="bean" class="cliente.bean.ClienteBean" />
+	</dwr:configuration>	  
+	
+	<bean id="clienteDAOImpl" class="cliente.dao.ClienteDAO">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="parametrosAuditoriaBean" ref="parametrosAuditoriaBeanImpl"/>
+		<property name="transaccionDAO" ref="transaccionDAOImpl"/>
+		<property name="transactionTemplate">
+			<bean class="org.springframework.transaction.support.TransactionTemplate">
+				<property name="transactionManager" ref="transactionManager" />
+			</bean>
+		</property>		
+	</bean> 
+		 
+	<bean id="clienteServicioImpl" class="cliente.servicio.ClienteServicio">
+		<dwr:remote javascript="clienteServicio">
+			<dwr:include method="consulta" />
+			<dwr:include method="listaCombo" />
+		</dwr:remote>
+		<property name="clienteDAO" ref="clienteDAOImpl"/>
+	</bean>
+	<bean name="/altaClientesVista.htm" class="cliente.controlador.AltaClientesVistaControlador">
+		<property name="formView" value="cliente/altaClientesVista" />
+		<property name="successView" value="resultadoTransaccionVista" />
+		<property name="clienteServicio" ref="clienteServicioImpl" />
+	</bean>
+
+	<dwr:configuration>
+		<dwr:convert type="bean" class="facturacion.bean.MetodoPagoBean" />
+	</dwr:configuration>	  
+	
+	<bean id="metodoPagoDAOImpl" class="facturacion.dao.MetodoPagoDAO">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="parametrosAuditoriaBean" ref="parametrosAuditoriaBeanImpl"/>
+		<property name="transaccionDAO" ref="transaccionDAOImpl"/>
+		<property name="transactionTemplate">
+			<bean class="org.springframework.transaction.support.TransactionTemplate">
+				<property name="transactionManager" ref="transactionManager" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="metodoPagoServicioImpl" class="facturacion.servicio.MetodoPagoServicio">
+		<dwr:remote javascript="metodoPagoServicio">
+			<dwr:include method="listaCombo" />
+		</dwr:remote>
+		<property name="metodoPagoDAO" ref="metodoPagoDAOImpl"/>
+	</bean>
+
+	<dwr:configuration>
+		<dwr:convert type="bean" class="facturacion.bean.FacturaBean" />
+	</dwr:configuration>	  
+	
+	<bean id="facturaDAOImpl" class="facturacion.dao.FacturaDAO">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="parametrosAuditoriaBean" ref="parametrosAuditoriaBeanImpl"/>
+		<property name="transaccionDAO" ref="transaccionDAOImpl"/>
+		<property name="transactionTemplate">
+			<bean class="org.springframework.transaction.support.TransactionTemplate">
+				<property name="transactionManager" ref="transactionManager" />
+			</bean>
+		</property>		
+	</bean> 
+		 
+	<bean id="facturaServicioImpl" class="facturacion.servicio.FacturaServicio">
+		<dwr:remote javascript="facturaServicio">
+			<dwr:include method="consulta" />
+		</dwr:remote>
+		<property name="facturaDAO" ref="facturaDAOImpl"/>	
+	</bean>
+			 
+	<!-- Alta Certificados  -->
+	<!-- bean name="/altaCertificado.htm" class="facturacion.controlador.AltaCertificadoControlador">
+		<property name="formView" value="facturacion/altaCertificadoVista" /> 
+		<property name="successView" value="resultadoTransaccionVista" />
+		<property name="facturaServicio" ref="facturaServicioImpl" />
+	</bean-->
+	
+	<!-- Genera Factura -->
+	<bean name="/generaFactura.htm" class="facturacion.controlador.GeneraFacturaControlador">
+		<property name="formView" value="facturacion/generaFacturaVista" />
+		<property name="successView" value="resultadoTransaccionVista" />
+		<property name="facturaServicio" ref="facturaServicioImpl" />
+	</bean>
+	
+	<bean name="/conceptosFactGrid.htm" class="facturacion.controlador.ConceptosFactGridControlador">
+		<property name="facturaServicio" ref="facturaServicioImpl" />
+	</bean>
+
+	<!-- Cancela Factura -->
+	<!-- bean name="/cancelaFactura.htm" class="facturacion.controlador.CancelaFacturaControlador">
+		<property name="formView" value="facturacion/cancelaFacturaVista" />
+		<property name="successView" value="resultadoTransaccionVista" />
+		<property name="facturaServicio" ref="facturaServicioImpl" />
+	</bean-->
+	
+	
+
+</beans>

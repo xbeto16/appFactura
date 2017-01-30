@@ -1,0 +1,276 @@
+body{
+	font-family: tahoma, geneva, sans-serif;
+	color:#2a3333;
+	background-color:#fff;
+	font-size: .90em;	
+}
+
+input, select, textarea, fieldset{
+	border:solid 1px #e0e0e0;
+	font-size: .70em;	
+}
+
+legend{
+	font-size: 1.0em;	
+}
+
+input[type="radio"]{
+	border:solid 1px #e0e0e0;
+	font-size: .70em;	
+}
+
+#ContenedorForma{
+	background:#f3f3f3;
+	padding:50px;	
+	-moz-border-radius:0.5em;
+	-webkit-border-radius:0.5em;
+	border-radius:0.5em;
+	position:relative;
+	top:80px;
+	left:5px;	
+	width:90%;
+	
+}
+#ContenedorAyuda{
+	background:#D8D8D8;
+}
+
+#ContenedorForma td {
+	vertical-align:middle;
+	padding-bottom:8px;
+	padding-right:2px;
+}
+
+
+label.error {
+	color: red;
+	font-family: tahoma, geneva, sans-serif;	
+	font-style: italic;
+	font-weight: normal;
+	font-size: .80em;	
+}
+
+
+td label.error {
+	color: red;
+	font-family: tahoma, geneva, sans-serif;	
+	font-style: italic;
+	font-weight: normal;
+	font-size: .80em;		
+}
+
+input.error, select.error, textarea.error{
+	border: 1px solid red;
+	background-color: #FFFFD5;
+	margin: 0px;
+	color: red;
+}
+
+#formaGenerica td label {
+	width: 150px;
+	font-size: .80em;
+	color:#999999;
+}
+#formaGrid td label2 { 
+	width: 150px; 
+	font-size: .80em;
+	color:#FF0000;
+	background-color:&quot;#E0FAC5&quot;
+}
+ 
+ 
+#formaGenerica2 td label {
+	width: 150px;
+	font-size: .80em;
+	color:#999999;
+}
+
+#formaGenerica3 td label {
+	width: 150px;
+	font-size: .80em;
+	color:#999999;
+}
+
+#formaGenerica4 td label {
+	width: 150px;
+	font-size: .80em;
+	color:#999999;
+}
+
+#formaGenerica5 td label {
+	width: 150px;
+	font-size: .80em;
+	color:#999999;
+}
+
+#tablaLista td {
+	font-size: .80em;
+}
+
+td.separador {
+	width: 50px;
+}
+
+td textarea{
+	padding:1px;
+	vertical-align:middle;
+	font-size: 1.0em;	
+}
+
+#encabezadoLista {
+	background-color: #659CD8;			
+	color: #fff;
+}
+
+#encabezadoAyuda{
+	font-size:8px;
+	color: #93AF2A;
+}
+#contenidoAyuda{
+	font-weight:bold;
+	color: #1D5424;
+}
+.botonGral {
+	font-size:8px;
+	font-family:Verdana,Helvetica;
+  	font-weight:bold;
+  	color:white;
+  	background:#00ADEE;
+  	border:0px;	
+}
+
+.botonGral:hover {
+	text-decoration:none !important;	
+	border:solid 1px #0099bb;
+	background:#70A8D2;
+}
+.botonDeshabilitado {
+	vertical-align:middle;
+	font-family: tahoma, geneva, sans-serif;
+	font-size:1.0em;
+	font-weight:normal	
+	border:solid 1px #056672;
+	padding:3px 5px 3px 5px !important;
+	color:#FFFFFF !important;
+	background-color: #B3B3B3;	
+	margin:3px 1px !important;	
+	white-space:nowrap;
+	cursor:pointer;
+}
+
+.submit {
+	display: inline-block;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	vertical-align:middle;
+	font-family: tahoma, geneva, sans-serif;
+	font-size:1.0em;
+	font-weight:normal	
+	border:solid 1px #056672;
+	padding:3px 5px 3px 5px !important;
+	color:#fff !important;
+	margin:3px 1px !important;
+	background:#05A1DB;
+	white-space:nowrap;
+	cursor:pointer;
+}
+
+.submit:hover {
+	text-decoration:none !important;
+	background:#00ADEE;
+	border:solid 1px #0099bb;
+}
+
+.btnElimina {
+	background:url(../images/eliminar.gif);
+	width: 18px;
+	height: 18px;
+	vertical-align:middle;
+}
+
+.btnAgrega {
+	background:url(../images/agregar.gif);
+	width: 18px;
+	height: 18px;
+	vertical-align:middle;
+}
+
+
+.btnAnterior {
+	background:url(../images/anterior.png);
+	width: 34px;
+	height: 31px;
+	vertical-align:middle;
+}
+
+.btnSiguiente {
+	background:url(../images/siguiente.png);
+	width: 34px;
+	height: 31px;
+	vertical-align:middle;
+}
+
+#cajaLista {
+	position: relative;
+	margin: 0px 0px 0px 0px;				
+	border:solid 1px #DBDBDB;		
+	background-color: #FFFFFF;
+}
+
+#elementoLista {
+	margin: 1px;
+	padding: px;
+}
+
+#elementoLista tr {		a
+	margin: 0px 0px 3px 0px;
+	padding: 3px;
+	cursor: pointer;
+	list-style-type:none;
+}
+
+#elementoLista tr:hover {		
+	background-color: #DDDDDD;
+}
+	
+#encabezadoOpcion{
+	background: url("../images/encabezado_bar.jpg") repeat-x;
+	height: 14px;
+	padding: 0 0 0px;
+	width: 100%;
+	margin-left: 0px;
+}
+
+#mapDiv {
+	width:	90%;
+	height: 700px;
+	border:1px solid #333;
+	background:#FFF;
+	padding:1px;
+}
+
+.desplegado {
+	background-color: #EBEBE4;
+	color:#545454;	
+}
+
+<!-- estilo para grid con colores de filar intercalados -->
+table.altColorFilasTabla { 
+	
+color:#333333;
+}
+
+.imparcolor{
+ background-color:#EFFBFB; 
+  font-size: .70em;
+}
+.parcolor{
+ background-color:#81BEF7;
+  font-size: .70em;
+}
+
+#encabezadoGrid {
+	background-color: #62AB02;			
+	color: #fff;
+}

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+	<display-name>AppFacturas</display-name>
+  
+	<display-name>Software Facturacion</display-name>
+	<description>appFactura</description>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+   </listener>  
+
+	<listener>
+		<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+	</listener>
+	
+   <context-param>
+   	<param-name>contextConfigLocation</param-name>		
+		<param-value>       
+			/WEB-INF/appfact-servlet.xml
+		</param-value>
+   </context-param>
+  	 
+	<servlet>
+		<servlet-name>appfact</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	</servlet>
+	  
+	<servlet-mapping>
+		<servlet-name>appfact</servlet-name>
+		<url-pattern>*.htm</url-pattern>
+		<url-pattern>/menuAplicacion.htm</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>dwr</servlet-name>
+		<servlet-class>org.directwebremoting.spring.DwrSpringServlet</servlet-class>
+  		<init-param>
+    		<param-name>debug</param-name>
+    		<param-value>false</param-value>
+  		</init-param>		
+  		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>dwr</servlet-name>
+		<url-pattern>/dwr/*</url-pattern>
+	</servlet-mapping>
+		
+	<filter>
+    	<filter-name>springSecurityFilterChain</filter-name>
+ 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+ 	
+	<welcome-file-list>
+		<welcome-file>menuAplicacion.htm</welcome-file>
+	</welcome-file-list>
+	
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/jsp/errors/sesionExpir.jsp</location>
+  	</error-page>  
+  
+	<error-page>
+		<exception-type>java.lang.Exception</exception-type>
+		<location>/WEB-INF/jsp/errors/PaginaError.jsp</location>
+  	</error-page>
+  
+ 	<session-config>
+        <session-timeout>10</session-timeout>
+	</session-config>
+</web-app>
